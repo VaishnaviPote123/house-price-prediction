@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>House Price Predictor</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>🏠 House Price Predictor</h1>
+            <p>Predict property prices using Machine Learning</p>
+        </div>
+
+        <div class="form-card">
+
+            <form id="predictionForm">
+
+                <div class="form-grid">
+
+                    <!-- City -->
+                    <div class="input-group">
+                        <label>City</label>
+
+                        <select id="city" required>
+                            <option value="">Select City</option>
+                            <option value="Pune">Pune</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Bangalore">Bangalore</option>
+                            <option value="Kolkata">Kolkata</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Noida">Noida</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Jaipur">Jaipur</option>
+                            <option value="Nagpur">Nagpur</option>
+                            <option value="Ahmedabad">Ahmedabad</option>
+                            <option value="Surat">Surat</option>
+                            <option value="Lucknow">Lucknow</option>
+                            <option value="Indore">Indore</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+
+                    <!-- BHK -->
+                    <div class="input-group">
+                        <label>BHK</label>
+
+                        <input
+                            type="number"
+                            id="bhk"
+                            min="1"
+                            max="10"
+                            placeholder="e.g. 2"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Square Feet -->
+                    <div class="input-group">
+                        <label>Area (Square Feet)</label>
+
+                        <input
+                            type="number"
+                            id="square_ft"
+                            min="100"
+                            placeholder="e.g. 1000"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Posted By -->
+                    <div class="input-group">
+                        <label>Posted By</label>
+
+                        <select id="posted_by" required>
+                            <option value="">Select</option>
+                            <option value="Owner">Owner</option>
+                            <option value="Dealer">Dealer</option>
+                            <option value="Builder">Builder</option>
+                        </select>
+                    </div>
+
+
+                    <!-- BHK or RK -->
+                    <div class="input-group">
+                        <label>Property Type</label>
+
+                        <select id="bhk_or_rk" required>
+                            <option value="BHK">BHK</option>
+                            <option value="RK">RK</option>
+                        </select>
+                    </div>
+
+
+                    <!-- RERA -->
+                    <div class="input-group">
+                        <label>RERA Approved</label>
+
+                        <select id="rera" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+
+
+                    <!-- Under Construction -->
+                    <div class="input-group">
+                        <label>Under Construction</label>
+
+                        <select id="under_construction" required>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+
+
+                    <!-- Ready to Move -->
+                    <div class="input-group">
+                        <label>Ready to Move</label>
+
+                        <select id="ready_to_move" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+
+
+                    <!-- Resale -->
+                    <div class="input-group">
+                        <label>Resale</label>
+
+                        <select id="resale" required>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+
+
+                    <!-- Latitude -->
+                    <div class="input-group">
+                        <label>Latitude</label>
+
+                        <input
+                            type="number"
+                            id="latitude"
+                            step="any"
+                            placeholder="e.g. 18.5204"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Longitude -->
+                    <div class="input-group">
+                        <label>Longitude</label>
+
+                        <input
+                            type="number"
+                            id="longitude"
+                            step="any"
+                            placeholder="e.g. 73.8567"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+
+                <button type="submit" class="predict-btn">
+                    Predict House Price
+                </button>
+
+            </form>
+
+
+            <!-- Loading -->
+            <div id="loading" class="loading">
+                Predicting...
+            </div>
+
+
+            <!-- Result -->
+            <div id="result" class="result">
+
+                <p>Estimated Property Price</p>
+
+                <h2 id="price">₹ 0 Lakhs</h2>
+
+                <span>Predicted by Random Forest ML Model</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
